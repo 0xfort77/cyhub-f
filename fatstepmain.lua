@@ -19,7 +19,7 @@ if game.PlaceId == 101325745836000 then
         
         ToggleUIKeybind = "K", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
         
-        DisableRayfieldPrompts = false,
+        DisableRayfieldPrompts = true,
         DisableBuildWarnings = false, -- Prevents Rayfield from emitting warnings when the script has a version mismatch with the interface.
         
         ConfigurationSaving = {
@@ -99,16 +99,36 @@ if game.PlaceId == 101325745836000 then
 
     local speedSlider = AlterPtab:CreateSlider({
         Name = "Speed",
-        Range = {16, 100},
+        Range = {30, 150},
         Increment = 2,
         Suffix = "",
-        CurrentValue = 10,
+        CurrentValue = 30,
         Flag = "PlayerSlider1", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
         Callback = function(Value)
         
             my_char.Humanoid.WalkSpeed = Value
         end,
     })
+
+    local Divider = AlterPtab:CreateDivider()
+
+    local Button = AlterPtab:CreateButton({
+        Name = "Open Daily Chest",
+        Callback = function()
+            local args = {
+	            {
+	            	{
+	            		"Daily"
+	            	},
+	            	"("
+	            }
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+
+        end,
+    })
+
+    local Divider = AlterPtab:CreateDivider()
 
     --//Main Tab (Wins)
 
