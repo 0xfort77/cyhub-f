@@ -341,7 +341,7 @@ if game.PlaceId == 101325745836000 then
                 local args = {
 	                {
 	                	{
-	                		"Titles Luck"
+	                		"Faster Eating"
 	                	},
 	                	"9"
 	                }
