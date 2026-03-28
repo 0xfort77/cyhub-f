@@ -2,7 +2,7 @@
 if game.PlaceId == 101325745836000 then
     
     
-    local _Version = "Cyan-Fatty v1.x"
+    local _Version = "Cyan-Fatty v1.1"
 
     --// call Library
     local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
@@ -11,11 +11,11 @@ if game.PlaceId == 101325745836000 then
     --// create window
     local Window = Rayfield:CreateWindow({
         Name = _Version,
-        Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+        Icon = "ham", -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
         LoadingTitle = "Cyan Hubs",
         LoadingSubtitle = "by 4NTHOcyan",
         ShowText = "Rayfield", -- for mobile users to unhide Rayfield, change if you'd like
-        Theme = "Bloom", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+        Theme = "Serenity", -- Check https://docs.sirius.menu/rayfield/configuration/themes
         
         ToggleUIKeybind = "K", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
         
@@ -113,7 +113,7 @@ if game.PlaceId == 101325745836000 then
     local Divider = AlterPtab:CreateDivider()
 
     local Button = AlterPtab:CreateButton({
-        Name = "Open Daily Chest",
+        Name = "Rebirth",
         Callback = function()
             local args = {
 	            {
@@ -190,7 +190,7 @@ if game.PlaceId == 101325745836000 then
 
     --//Create Tab (Menu)
 
-    local Paragraph = UpTab:CreateParagraph({Title = "Notice:", Content = "Update in progress, thank you for your patience. Features will be modified soon."})
+    --local Paragraph = UpTab:CreateParagraph({Title = "Notice:", Content = "Update in progress, thank you for your patience. Features will be modified soon."})
 
     local ShopTab = UpTab:CreateToggle({
 
@@ -243,10 +243,12 @@ if game.PlaceId == 101325745836000 then
             while rebirth_flag do
 
                 local args = {
-                    {
-                        {},
-	                	"'"
-                    }
+	                {
+	                	{
+	                		"Daily"
+	                	},
+	                	"("
+	                }
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
 
@@ -257,7 +259,7 @@ if game.PlaceId == 101325745836000 then
         end,    
     })
 
-    local UpSection = UpTab:CreateSection("attempt rebirth every 60 seconds")
+    local UpSection = UpTab:CreateSection("attempt rebirth every 60 seconds ~ Cost: user dependent")
     local Divider = UpTab:CreateDivider()
 
     local EggLuck = UpTab:CreateToggle({
@@ -285,7 +287,7 @@ if game.PlaceId == 101325745836000 then
                 		{
                 			"Eggs Luck"
                 		},
-                		"9"
+                		"<"
                 	}
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
@@ -297,7 +299,7 @@ if game.PlaceId == 101325745836000 then
         end,    
     })
 
-    local UpSection = UpTab:CreateSection("attempt to upgrade egg luck multiplier every 60 seconds")
+    local UpSection = UpTab:CreateSection("attempt to upgrade egg luck multiplier every 60 seconds ~ Cost: user dependent")
     local Divider = UpTab:CreateDivider()
 
     local TitleLuck = UpTab:CreateToggle({
@@ -325,7 +327,7 @@ if game.PlaceId == 101325745836000 then
 	                	{
 	                		"Titles Luck"
 	                	},
-	                	"9"
+	                	"<"
 	                }
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
@@ -337,7 +339,7 @@ if game.PlaceId == 101325745836000 then
         end,    
     })
 
-    local UpSection = UpTab:CreateSection("attempt to upgrade title luck multiplier every 60 seconds")
+    local UpSection = UpTab:CreateSection("attempt to upgrade title luck multiplier every 60 seconds ~ Cost: user dependent")
     local Divider = UpTab:CreateDivider()
 
     local Eatingg = UpTab:CreateToggle({
@@ -365,7 +367,7 @@ if game.PlaceId == 101325745836000 then
 	                	{
 	                		"Faster Eating"
 	                	},
-	                	"9"
+	                	"<"
 	                }
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
@@ -377,8 +379,64 @@ if game.PlaceId == 101325745836000 then
         end,    
     })
 
-    local UpSection = UpTab:CreateSection("attempt to buy faster eating every 60 seconds")
+    local UpSection = UpTab:CreateSection("attempt to buy faster eating every 60 seconds ~ Cost: user dependent")
+    local Divider = UpTab:CreateDivider()
+    local rolling_dice_flag = false
+    local rollinggggg = UpTab:CreateToggle({
 
+        Name = "Auto Roll Dice",
+        CurrentValue = false,
+        Flag = "UpToggleeatingLuck", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+        Callback = function(Value)
+
+            rolling_dice_flag = Value
+            
+            if rolling_dice_flag then
+                Rayfield:Notify({
+                    Title = "Auto Roll Dice enabled",
+                    Content = "Please wait...",
+                    Duration = 4,
+                    Image = 4483362458,
+                })
+            end
+
+            while rolling_dice_flag do
+
+                local args = {
+	                {
+	                	{},
+	                	"-"
+	                }
+                }   
+                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+
+                task.wait(8)
+
+            end
+
+        end,    
+    })
+
+    local rollUpSection = UpTab:CreateSection("roll your title dice every 8 seconds ~ Cost: 10 wins")
+    local Divider = UpTab:CreateDivider()
+    --auto roll
+    -- 
+
+
+    -- 2x fat boost potion?
+    -- local args = {
+	--     {
+	--     	{
+	--     		"Main Boost"
+	--     	},
+	--     	"0"
+	--     }
+    -- }
+    -- game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+
+    -- no afk rebirth?
+    -- upgrade menu buggy
+    -- 
 end
 
    
