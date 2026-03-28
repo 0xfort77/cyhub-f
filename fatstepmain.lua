@@ -2,7 +2,7 @@
 if game.PlaceId == 101325745836000 then
     
     
-    local _Version = "Cyan-Fatty"
+    local _Version = "Cyan-Fatty v1.x"
 
     --// call Library
     local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
@@ -13,7 +13,7 @@ if game.PlaceId == 101325745836000 then
         Name = _Version,
         Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
         LoadingTitle = "Cyan Hubs",
-        LoadingSubtitle = "by 4NTHO",
+        LoadingSubtitle = "by 4NTHOcyan",
         ShowText = "Rayfield", -- for mobile users to unhide Rayfield, change if you'd like
         Theme = "Bloom", -- Check https://docs.sirius.menu/rayfield/configuration/themes
         
@@ -29,8 +29,8 @@ if game.PlaceId == 101325745836000 then
         },
     
         Discord = {
-           Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
-           Invite = "noinvitelink", -- The Discord invite code, do not include Discord.gg/. E.g. Discord.gg/ ABCD would be ABCD
+           Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
+           Invite = "9vxK5cdGy4", -- The Discord invite code, do not include Discord.gg/. E.g. Discord.gg/ ABCD would be ABCD
            RememberJoins = true -- Set this to false to make them join the Discord every time they load it up
         },
     
@@ -81,7 +81,7 @@ if game.PlaceId == 101325745836000 then
         Title = "Welcome!",
         Content = "Thanks for using CyanHub by 4NTHOcyan",
         Duration = 6.5,
-        Image = 4483362458,
+        Image = "heart",
         })
 
     Rayfield:Notify({
@@ -91,9 +91,9 @@ if game.PlaceId == 101325745836000 then
         Image = 4483362458,
         })
 
-    local AlterPtab = Window:CreateTab("Player", 4483362458)
-    local Tab = Window:CreateTab("Wins", 4483362458) -- Title, Image
-    local UpTab = Window:CreateTab("Upgrades", 4483362458) -- Title, Image
+    local AlterPtab = Window:CreateTab("Player", "user")
+    local Tab = Window:CreateTab("Wins", "trophy") -- Title, Image
+    local UpTab = Window:CreateTab("Upgrades", "store") -- Title, Image
 
     --// Create Tab (player)
 
@@ -189,6 +189,8 @@ if game.PlaceId == 101325745836000 then
     })
 
     --//Create Tab (Menu)
+
+    local Paragraph = UpTab:CreateParagraph({Title = "Notice:", Content = "Update in progress, thank you for your patience. Features will be modified soon."})
 
     local ShopTab = UpTab:CreateToggle({
 
