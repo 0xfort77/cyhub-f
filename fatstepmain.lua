@@ -2,7 +2,7 @@
 if game.PlaceId == 101325745836000 then
     
     
-    local _Version = "Cyan-Fatty v1.1"
+    local _Version = "Cyan-Fatty v1.1.01"
 
     --// call Library
     local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
@@ -20,7 +20,7 @@ if game.PlaceId == 101325745836000 then
         ToggleUIKeybind = "K", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
         
         DisableRayfieldPrompts = true,
-        DisableBuildWarnings = false, -- Prevents Rayfield from emitting warnings when the script has a version mismatch with the interface.
+        DisableBuildWarnings = true, -- Prevents Rayfield from emitting warnings when the script has a version mismatch with the interface.
         
         ConfigurationSaving = {
            Enabled = false,
@@ -86,14 +86,13 @@ if game.PlaceId == 101325745836000 then
 
     Rayfield:Notify({
         Title = "Notification",
-        Content = "Some features may cause UI bugs (i.e. infinite loading...)\nFeatures will be added/improved as the game upgrades",
-        Duration = 12,
+        Content = "Some features have been removed because of the developer's anti-cheat implementations",
+        Duration = 15,
         Image = 4483362458,
         })
 
     local AlterPtab = Window:CreateTab("Player", "user")
     local Tab = Window:CreateTab("Wins", "trophy") -- Title, Image
-    local UpTab = Window:CreateTab("Upgrades", "store") -- Title, Image
 
     --// Create Tab (player)
 
@@ -117,10 +116,9 @@ if game.PlaceId == 101325745836000 then
         Callback = function()
             local args = {
 	            {
-	            	{
-	            		"Daily"
-	            	},
-	            	"("
+	            	{},
+
+	            	")"
 	            }
             }
             game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
@@ -187,252 +185,6 @@ if game.PlaceId == 101325745836000 then
 
         end,
     })
-
-    --//Create Tab (Menu)
-
-    --local Paragraph = UpTab:CreateParagraph({Title = "Notice:", Content = "Update in progress, thank you for your patience. Features will be modified soon."})
-
-    local ShopTab = UpTab:CreateToggle({
-
-        Name = "Show Upgrade Menu",
-        CurrentValue = false,
-        Flag = "UpToggle1", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-        Callback = function(Value)
-
-            upgrade_menu_toggle = Value
-
-            if upgrade_menu_toggle then
-
-                task.wait()
-                menu_ui.Visible = true
-
-                upgrade_ui.Visible = true
-                upgrade_ui.Position = UDim2.new(0.5, 0, 0.465, 0)
-            
-            else
-                task.wait()
-                menu_ui.Visible = false
-
-                upgrade_ui.Visible = false
-            end
-
-        end,
-    })
-
-    local UpSection = UpTab:CreateSection("enjoy access to the upgrade menu anywhere in the server")
-    local Divider = UpTab:CreateDivider()
-
-    local Rebirth = UpTab:CreateToggle({
-
-        Name = "AFK Rebirth",
-        CurrentValue = false,
-        Flag = "UpToggleRebirth", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-        Callback = function(Value)
-
-            rebirth_flag = Value
-            
-            if rebirth_flag then
-                Rayfield:Notify({
-                    Title = "AFK Rebirth enabled",
-                    Content = "Please wait...",
-                    Duration = 4,
-                    Image = 4483362458,
-                })
-            end
-
-            while rebirth_flag do
-
-                local args = {
-	                {
-	                	{
-	                		"Daily"
-	                	},
-	                	"("
-	                }
-                }
-                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
-
-                task.wait(60)
-
-            end
-
-        end,    
-    })
-
-    local UpSection = UpTab:CreateSection("attempt rebirth every 60 seconds ~ Cost: user dependent")
-    local Divider = UpTab:CreateDivider()
-
-    local EggLuck = UpTab:CreateToggle({
-
-        Name = "Auto Buy Egg Luck",
-        CurrentValue = false,
-        Flag = "UpToggleEggLuck", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-        Callback = function(Value)
-
-            egg_flag = Value
-            
-            if egg_flag then
-                Rayfield:Notify({
-                    Title = "Auto Buy Egg Luck enabled",
-                    Content = "Please wait...",
-                    Duration = 4,
-                    Image = 4483362458,
-                })
-            end
-
-            while egg_flag do
-
-                local args = {
-                	{
-                		{
-                			"Eggs Luck"
-                		},
-                		"<"
-                	}
-                }
-                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
-
-                task.wait(60)
-
-            end
-
-        end,    
-    })
-
-    local UpSection = UpTab:CreateSection("attempt to upgrade egg luck multiplier every 60 seconds ~ Cost: user dependent")
-    local Divider = UpTab:CreateDivider()
-
-    local TitleLuck = UpTab:CreateToggle({
-
-        Name = "Auto Buy Title Luck",
-        CurrentValue = false,
-        Flag = "UpToggleTitleLuck", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-        Callback = function(Value)
-
-            title_flag = Value
-            
-            if title_flag then
-                Rayfield:Notify({
-                    Title = "Auto Buy Title Luck enabled",
-                    Content = "Please wait...",
-                    Duration = 4,
-                    Image = 4483362458,
-                })
-            end
-
-            while title_flag do
-
-                local args = {
-	                {
-	                	{
-	                		"Titles Luck"
-	                	},
-	                	"<"
-	                }
-                }
-                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
-
-                task.wait(60)
-
-            end
-
-        end,    
-    })
-
-    local UpSection = UpTab:CreateSection("attempt to upgrade title luck multiplier every 60 seconds ~ Cost: user dependent")
-    local Divider = UpTab:CreateDivider()
-
-    local Eatingg = UpTab:CreateToggle({
-
-        Name = "Auto Buy Faster Eating",
-        CurrentValue = false,
-        Flag = "UpToggleeatingLuck", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-        Callback = function(Value)
-
-            eating_flag = Value
-            
-            if eating_flag then
-                Rayfield:Notify({
-                    Title = "Auto Buy Faster Eating enabled",
-                    Content = "Please wait...",
-                    Duration = 4,
-                    Image = 4483362458,
-                })
-            end
-
-            while eating_flag do
-
-                local args = {
-	                {
-	                	{
-	                		"Faster Eating"
-	                	},
-	                	"<"
-	                }
-                }
-                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
-
-                task.wait(60)
-
-            end
-
-        end,    
-    })
-
-    local UpSection = UpTab:CreateSection("attempt to buy faster eating every 60 seconds ~ Cost: user dependent")
-    local Divider = UpTab:CreateDivider()
-    local rolling_dice_flag = false
-    local rollinggggg = UpTab:CreateToggle({
-
-        Name = "Auto Roll Dice",
-        CurrentValue = false,
-        Flag = "UpToggleeatingLuck", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-        Callback = function(Value)
-
-            rolling_dice_flag = Value
-            
-            if rolling_dice_flag then
-                Rayfield:Notify({
-                    Title = "Auto Roll Dice enabled",
-                    Content = "Please wait...",
-                    Duration = 4,
-                    Image = 4483362458,
-                })
-            end
-
-            while rolling_dice_flag do
-
-                local args = {
-	                {
-	                	{},
-	                	"-"
-	                }
-                }   
-                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
-
-                task.wait(8)
-
-            end
-
-        end,    
-    })
-
-    local rollUpSection = UpTab:CreateSection("roll your title dice every 8 seconds ~ Cost: 10 wins")
-    local Divider = UpTab:CreateDivider()
-    --auto roll
-    -- 
-
-
-    -- 2x fat boost potion?
-    -- local args = {
-	--     {
-	--     	{
-	--     		"Main Boost"
-	--     	},
-	--     	"0"
-	--     }
-    -- }
-    -- game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
 
     -- no afk rebirth?
     -- upgrade menu buggy
